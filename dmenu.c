@@ -790,6 +790,29 @@ readxresources(void) {
 		else
 			colors[SchemeSel][ColFg] = strdup(colors[SchemeSel][ColFg]);
 
+    /* my additions to add xresources for highlight patch */
+        /* SelHighlight FG and BG */
+        if (XrmGetResource(xdb, "dmenu.selhighlightfg", "*", &type, &xval))
+			colors[SchemeSelHighlight][ColFg] = strdup(xval.addr);
+		else
+			colors[SchemeSelHighlight][ColFg] = strdup(colors[SchemeSelHighlight][ColFg]);
+
+        if (XrmGetResource(xdb, "dmenu.selhighlightbg", "*", &type, &xval))
+			colors[SchemeSelHighlight][ColBg] = strdup(xval.addr);
+		else
+			colors[SchemeSelHighlight][ColBg] = strdup(colors[SchemeSelHighlight][ColBg]);
+
+        /* NormHighlight FG and BG */
+        if (XrmGetResource(xdb, "dmenu.normhighlightfg", "*", &type, &xval))
+			colors[SchemeNormHighlight][ColFg] = strdup(xval.addr);
+		else
+			colors[SchemeNormHighlight][ColFg] = strdup(colors[SchemeNormHighlight][ColFg]);
+
+        if (XrmGetResource(xdb, "dmenu.normhighlightbg", "*", &type, &xval))
+			colors[SchemeNormHighlight][ColBg] = strdup(xval.addr);
+		else
+			colors[SchemeNormHighlight][ColBg] = strdup(colors[SchemeNormHighlight][ColBg]);
+
 		XrmDestroyDatabase(xdb);
 	}
 }
